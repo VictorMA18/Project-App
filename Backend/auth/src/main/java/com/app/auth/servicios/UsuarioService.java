@@ -3,6 +3,7 @@ package com.app.auth.servicios;
 import com.app.auth.entidades.Usuario;
 import com.app.auth.entidades.UsuarioRol;
 
+import java.util.List;
 import java.util.Set;
 
 public interface UsuarioService {
@@ -11,6 +12,8 @@ public interface UsuarioService {
     public Usuario obtenerUsuario(String username);
 
     public void eliminarUsuario(Long usuarioId);
+
+    public List<Usuario> obtenerUsuarios();
 }
 
 

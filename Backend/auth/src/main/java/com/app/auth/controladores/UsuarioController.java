@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/usuarios")
 public class UsuarioController {
@@ -30,6 +32,11 @@ public class UsuarioController {
         usuarioRol.setRol(rol);
 
         return usuarioService.guardarUsuario(usuario, roles);
+    }
+
+    @GetMapping("/All")
+    public List<Usuario> obtenerUsuarios(){
+        return usuarioService.obtenerUsuarios();
     }
 
     @GetMapping("/{username}")
