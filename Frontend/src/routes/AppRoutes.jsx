@@ -1,17 +1,19 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as  BrowserRouter, Router, Routes, Route } from 'react-router-dom';
 import LoginPage from '../pages/LoginPage';
 import RegisterPage from '../pages/RegisterPage';
+import UsuarioPage from '../pages/UsuariosPage';
 
 const AppRoutes = () => {
   return (
-    <Router>
+    <BrowserRouter>
       <Routes>
         <Route path="/login" Component={LoginPage} />
         <Route path="/register" Component={RegisterPage} />
+        <Route path="/usuarios" Component={UsuarioPage} />
         <Route path="*" Component={LoginPage} /> {/* Ruta por defecto */}
       </Routes>
-    </Router>
+    </BrowserRouter>
   );
 };
 
