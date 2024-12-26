@@ -11,7 +11,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/usuarios")
 public class UsuarioController {
@@ -21,7 +21,8 @@ public class UsuarioController {
 
     @PostMapping("/")
     public Usuario guardarUsuario(@RequestBody Usuario usuario) throws Exception{
-        Set<UsuarioRol> roles = new HashSet<>();
+        usuario.setPerfil("default.png");
+        Set<UsuarioRol> usuarioRoles = new HashSet<>();
 
         Rol rol = new Rol();
         rol.setRolId(2L);
@@ -31,7 +32,8 @@ public class UsuarioController {
         usuarioRol.setUsuario(usuario);
         usuarioRol.setRol(rol);
 
-        return usuarioService.guardarUsuario(usuario, roles);
+        usuarioRoles.add(usuarioRol);
+        return usuarioService.guardarUsuario(usuario, usuarioRoles);
     }
 
     @GetMapping("/All")

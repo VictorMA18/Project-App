@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import FormInput from '../components/FormInput';
 import UsuarioService from '../services/UsuarioService';
 import { useNavigate } from 'react-router-dom';
+import Notification from '../components/NotificationUserComponent';
 
 const RegisterPage = () => {
   const [username , setUserName ] = useState('');
@@ -10,13 +11,26 @@ const RegisterPage = () => {
   const [apellido , setApellido ] = useState('');
   const [email , setEmail ] = useState('');
   const [telefono , setTelefono ] = useState('');
+  const [showNotification, setShowNotification] = useState(false);
   const navigate = useNavigate();
+
+
+  const handleRegister = () => {
+    // Mostrar notificación
+    setShowNotification(true);
+
+    // Ocultar después de 3 segundos
+    setTimeout(() => {
+      setShowNotification(false);
+    }, 3000);
+  };
 
   const saveUsuario = (e) => {
     e.preventDefault();
     const usuario = { username , password, nombre, apellido , email , telefono};
     UsuarioService.createUser(usuario).then((response) => {
       console.log(response.data);
+      handleRegister();
       navigate('/usuarios');
     }).catch(error =>{
       console.log(error);
@@ -74,6 +88,9 @@ const RegisterPage = () => {
           </a>
         </p>
       </div>
+      {showNotification && (
+        <Notification message="Usuario registrado exitosamente" onClose={() => setShowNotification(false)} />
+      )}
     </div>
   );
 };

@@ -47,7 +47,5 @@ public class AuthApplication implements CommandLineRunner {
 		Usuario usuarioGuardado = usuarioService.guardarUsuario(usuario, usuarioRoles);
 		System.out.println(usuarioGuardado.getUsername());
 		 */
-
-
 	}
 }
