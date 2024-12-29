@@ -2,27 +2,19 @@ import React, {useState} from 'react';
 import FormInput from '../components/FormInput';
 import ListUsuarios from '../components/ListUsuariosComponent';
 import Notification from '../components/NotificationUserComponent';
+import Navbar from '../components/NavbarComponent';
+import Footer from '../components/FooterComponent';
 
 const UsuarioPage = () => {
-  const [showNotification, setShowNotification] = useState(false);
-  const handleRegister = () => {
-    // Mostrar notificación
-    setShowNotification(true);
-
-    // Ocultar después de 3 segundos
-    setTimeout(() => {
-      setShowNotification(false);
-    }, 3000);
-  };
-
 
   return (
-    <div className="flex items-start justify-center min-h-screen bg-gray-600">
-      <ListUsuarios/>
-      {showNotification && (
-        <Notification message="Usuario registrado exitosamente" onClose={() => setShowNotification(false)} />
-      )} 
-    </div>
+    <div className='flex flex-col max-h-screen'>  
+      <Navbar/>
+      <div className="flex items-start justify-center min-h-screen bg-gray-600">
+        <ListUsuarios/>
+      </div>
+      <Footer/>
+    </div> 
   );
 };
 

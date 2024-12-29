@@ -15,7 +15,7 @@ export const ListUsuarios = () => {
   }, [])
 
   return (
-    <div className="flex flex-col items-center justify-center bg-gray-100 p-4 ">
+    <div className="flex flex-col items-center justify-center bg-gray-100 p-4 mt-10 rounded">
       <h2 className="text-2xl font-bold text-gray-800 mb-4">Lista de Usuarios</h2>
       <div className="w-full max-w-4xl overflow-x-auto">
         <Link to='/register' className="w-full"> 

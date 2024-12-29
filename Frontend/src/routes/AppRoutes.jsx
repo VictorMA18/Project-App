@@ -3,6 +3,7 @@ import { BrowserRouter as  BrowserRouter, Router, Routes, Route } from 'react-ro
 import LoginPage from '../pages/LoginPage';
 import RegisterPage from '../pages/RegisterPage';
 import UsuarioPage from '../pages/UsuariosPage';
+import HomePage from '../pages/HomePage';
 
 const AppRoutes = () => {
   return (
@@ -11,7 +12,8 @@ const AppRoutes = () => {
         <Route path="/login" Component={LoginPage} />
         <Route path="/register" Component={RegisterPage} />
         <Route path="/usuarios" Component={UsuarioPage} />
-        <Route path="*" Component={LoginPage} /> {/* Ruta por defecto */}
+        <Route path='/home' Component={HomePage}/>
+        <Route path="*" Component={HomePage} /> {/* Ruta por defecto */}
       </Routes>
     </BrowserRouter>
   );
