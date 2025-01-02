@@ -1,15 +1,13 @@
 import React, {useState} from 'react';
-import FormInput from '../components/FormInput';
-import ListUsuarios from '../components/ListUsuariosComponent';
-import Notification from '../components/NotificationUserComponent';
-import Navbar from '../components/NavbarComponent';
-import Footer from '../components/FooterComponent';
+import ListUsuarios from '../../components/ListUsuariosComponent';
+import Footer from '../../components/FooterComponent';
+import NavbarWrapperComponent from '../../components/NavbarWrappedComponent';
 
 const UsuarioPage = () => {
 
   return (
     <div className='flex flex-col max-h-screen'>  
-      <Navbar/>
+      <NavbarWrapperComponent/>
       <div className="flex items-start justify-center min-h-screen bg-gray-600">
         <ListUsuarios/>
       </div>

@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import FormInput from '../components/FormInput';
 import Navbar from '../components/NavbarComponent';
 import Footer from '../components/FooterComponent';
-import axios from 'axios';
+import LoginService from '../services/LoginService';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
+  const navigate = useNavigate();
   const [loginData, setLoginData] = useState({
     username: '',
     password: '',
@@ -32,8 +34,21 @@ const LoginPage = () => {
     }
 
     try {
-      const response = await axios.post(`http://localhost:8080/generate-token`, loginData);
-      console.log('Token generado:', response.data);
+      const response = await LoginService.generateToken(loginData);
+      const token = response.data.token;
+
+      LoginService.loginUser(token);
+
+      const userResponse = await LoginService.getCurrentUser();
+      console.log(userResponse.data)
+      LoginService.setUser(userResponse.data);
+      console.log('Inicio de sesión exitoso');
+      const user = JSON.parse(localStorage.getItem('user'));
+      if (user?.authorities?.[0]?.authority === 'ADMIN') {
+        navigate('/admin/users');
+      } else if (user?.authorities?.[0]?.authority === 'NORMAL') {
+        navigate('/user/profile');
+      }
     } catch (error) {
       console.error('Error al iniciar sesión:', error);
       alert('Error al iniciar sesión. Verifica tus credenciales.');
