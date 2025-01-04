@@ -64,7 +64,7 @@ const RegisterPage = () => {
               id="Telefono" 
               label="Teléfono" 
               type="tel" 
-              placeholder="123-45-678" 
+              placeholder="999999999" 
               pattern="[0-9]{9}"
               value={telefono}
               onChange={(e) => setTelefono(e.target.value)}

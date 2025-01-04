@@ -8,7 +8,7 @@ const AuthNavbarComponent = () => {
   const handleLogout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
-    navigate('/home');
+    navigate('/login');
   };
 
   const handleProfile = () => {

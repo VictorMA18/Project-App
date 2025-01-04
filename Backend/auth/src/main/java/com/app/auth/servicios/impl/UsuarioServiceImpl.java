@@ -2,6 +2,7 @@ package com.app.auth.servicios.impl;
 
 import com.app.auth.entidades.Usuario;
 import com.app.auth.entidades.UsuarioRol;
+import com.app.auth.excepciones.UsuarioFoundException;
 import com.app.auth.repositorios.RolRepository;
 import com.app.auth.repositorios.UsuarioRepository;
 import com.app.auth.servicios.UsuarioService;
@@ -26,7 +27,7 @@ public class UsuarioServiceImpl implements UsuarioService {
         Usuario usuarioLocal = usuarioRepository.findByUsername(usuario.getUsername());
         if(usuarioLocal != null){
             System.out.println("El usuario ya existe");
-            throw new Exception("El usuario ya esta presente");
+            throw new UsuarioFoundException("El usuario ya esta presente");
         }
         else {
             for(UsuarioRol usuarioRol: usuarioRoles){
